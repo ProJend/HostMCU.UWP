@@ -25,11 +25,10 @@
                     Content="主页"
                     Icon="Home"
                     Tag="home" />
-                <muxc:NavigationViewItem Content="历史记录" Tag="history">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xEC92;" />
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem
+                    Content="历史记录"
+                    Icon="Calendar"
+                    Tag="history" />
             </muxc:NavigationView.MenuItems>
             <muxc:NavigationView.PaneFooter>
                 <StackPanel Margin="24,10">
