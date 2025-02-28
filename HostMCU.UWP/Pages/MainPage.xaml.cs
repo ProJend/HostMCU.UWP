@@ -23,7 +23,7 @@ namespace HostMCU.UWP.Pages
     public sealed partial class MainPage : Page
     {
         SerialPortServer serialPortServere = ((App)Application.Current).serialPortServere;
-        MainViewModel mainViewModel = new MainViewModel();
+        MainViewModel mainViewModel = new();
 
         public MainPage()
         {
@@ -177,23 +177,30 @@ namespace HostMCU.UWP.Pages
 
         private async void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!serialPortServere.IsSerialPortOpen.GetValueOrDefault())
+            if (serialPortServere.IsSerialPortOpen.GetValueOrDefault())
             {
+                serialPortServere.CloseSerialPort();
+            }
+            else
+            {
+                if (PortName.SelectedIndex == -1)
+                {
+                    PortName.SelectedIndex = mainViewModel.PortNameCollection.Count - 1;
+                }
                 if (PortName.SelectedItem is ComboBoxOption selectedItem && BaudRate.SelectedItem is ComboBoxItem selectedItem2)
                 {
                     string pattern = @"COM\d+";
                     var match = Regex.Match(selectedItem.Name, pattern);
+                    if (!match.Success)
+                    {
+                        ToggleButton.IsChecked = false;
+                        return;
+                    }
                     string portName = match.Value;
                     uint.TryParse(selectedItem2.Content as string, out uint baudRate);
 
                     await serialPortServere.InitializeSerialPortAsync(portName, baudRate);
-                    mainViewModel.ToggleButton_Content = "已连接";
                 }
-            }
-            else
-            {
-                serialPortServere.CloseSerialPort();
-                mainViewModel.ToggleButton_Content = "未连接";
             }
         }
     }

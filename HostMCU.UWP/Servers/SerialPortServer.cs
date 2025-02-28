@@ -119,7 +119,7 @@ namespace HostMCU.UWP.Servers
             watcher.Removed += OnDeviceRemoved;
             watcher.Start();
 
-            ObservableCollection<ComboBoxOption> serialPortOptions = new ObservableCollection<ComboBoxOption>();
+            ObservableCollection<ComboBoxOption> serialPortOptions = [];
             foreach (var device in deviceCollection)
             {
                 serialPortOptions.Add(new ComboBoxOption(device.Name));
@@ -135,7 +135,8 @@ namespace HostMCU.UWP.Servers
 
         private void OnDeviceRemoved(DeviceWatcher sender, DeviceInformationUpdate args)
         {
-            IsSerialPortOpen = false;
+            if (IsSerialPortOpen == true)
+                IsSerialPortOpen = false;
         }
     }
 }
