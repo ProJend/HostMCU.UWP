@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.ApplicationModel.Core;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using HostMCU.UWP.Pages;
+using HostMCU.UWP.Servers;
 
 namespace HostMCU.UWP
 {
@@ -22,6 +17,8 @@ namespace HostMCU.UWP
     /// </summary>
     sealed partial class App : Application
     {
+        public SerialPortServer serialPortServere = new SerialPortServer();
+
         /// <summary>
         /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行，
         /// 已执行，逻辑上等同于 main() 或 WinMain()。
@@ -39,6 +36,8 @@ namespace HostMCU.UWP
         /// <param name="e">有关启动请求和过程的详细信息。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            CollapseTitleBar();
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // 不要在窗口已包含内容时重复应用程序初始化，
@@ -95,6 +94,26 @@ namespace HostMCU.UWP
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: 保存应用程序状态并停止任何后台活动
             deferral.Complete();
+        }
+
+        /// <summary>
+        /// 沉淀状态栏 for PC
+        /// </summary>
+        private void CollapseTitleBar()
+        {
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            //titleBar.ButtonForegroundColor = Colors.White;
+
+            //titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            //titleBar.ButtonInactiveForegroundColor = Colors.Gray;
+
+            //titleBar.ButtonHoverBackgroundColor = Colors.PaleTurquoise;
+            //titleBar.ButtonHoverForegroundColor = Colors.Black;
+
+            //titleBar.ButtonPressedBackgroundColor = Colors.PaleTurquoise;
+            //titleBar.ButtonPressedForegroundColor = Colors.White;
         }
     }
 }
