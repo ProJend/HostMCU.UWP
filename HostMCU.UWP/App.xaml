@@ -2,12 +2,36 @@
     x:Class="HostMCU.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Mica="using:MicaForUWP.Media"
     xmlns:local="using:HostMCU.UWP">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
             </ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Dark">
+                    <Mica:BackdropMicaBrush
+                        x:Key="PageBackgroundMicaBrush"
+                        BackgroundSource="WallpaperBackdrop"
+                        FallbackColor="Black"
+                        LuminosityOpacity="0.7"
+                        TintColor="Black"
+                        TintOpacity="0" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <Mica:BackdropMicaBrush
+                        x:Key="PageBackgroundMicaBrush"
+                        BackgroundSource="WallpaperBackdrop"
+                        FallbackColor="White"
+                        LuminosityOpacity="0.7"
+                        TintColor="White"
+                        TintOpacity="0" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="HighContrast">
+                    <SolidColorBrush x:Key="PageBackgroundMicaBrush">#00000000</SolidColorBrush>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 

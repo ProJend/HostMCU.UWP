@@ -6,7 +6,7 @@
     xmlns:local="using:HostMCU.UWP"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
+    Background="{ThemeResource PageBackgroundMicaBrush}"
     Loaded="Main_Loaded"
     mc:Ignorable="d">
 

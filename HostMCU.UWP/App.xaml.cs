@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using HostMCU.UWP.Pages;
 using HostMCU.UWP.Servers;
+using System.Runtime;
 
 namespace HostMCU.UWP
 {
@@ -104,16 +105,7 @@ namespace HostMCU.UWP
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
-            //titleBar.ButtonForegroundColor = Colors.White;
-
-            //titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            //titleBar.ButtonInactiveForegroundColor = Colors.Gray;
-
-            //titleBar.ButtonHoverBackgroundColor = Colors.PaleTurquoise;
-            //titleBar.ButtonHoverForegroundColor = Colors.Black;
-
-            //titleBar.ButtonPressedBackgroundColor = Colors.PaleTurquoise;
-            //titleBar.ButtonPressedForegroundColor = Colors.White;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
     }
 }
