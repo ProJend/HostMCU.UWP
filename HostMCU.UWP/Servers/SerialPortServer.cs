@@ -71,11 +71,12 @@ namespace HostMCU.UWP.Servers
                     try
                     {
                         // 读取数据
-                        uint bytesRead = await dataReader.LoadAsync(1024);
+                        uint bytesRead = await dataReader.LoadAsync(20);
                         if (bytesRead > 0)
                         {
                             string data = dataReader.ReadString(bytesRead);
                             Console.WriteLine("收到数据: " + data);
+                            data = data.Replace("\r\n", Environment.NewLine);
                             return data;
                         }
                     }

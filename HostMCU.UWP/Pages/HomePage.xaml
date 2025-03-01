@@ -43,6 +43,12 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
+        <TextBox
+            x:Name="Content"
+            MinHeight="200" AcceptsReturn="True"
+            Margin="20"
+            HorizontalAlignment="Stretch"
+            Text="{x:Bind homeViewModel.Content_Text, Mode=OneWay}" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
