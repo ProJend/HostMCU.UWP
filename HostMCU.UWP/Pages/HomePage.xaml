@@ -13,7 +13,7 @@
             Margin="20"
             Padding="20"
             VerticalAlignment="Top"
-            Background="{ThemeResource LayerFillColorDefaultBrush}"
+            Background="{ThemeResource ControlFillColorDefaultBrush}"
             CornerRadius="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -23,7 +23,7 @@
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-                <Run Text="NULL"></Run>
+                <Run Text="NULL" />
                 <Run Text=" ℃" />
             </TextBlock>
             <StackPanel Grid.Column="1">
@@ -49,26 +49,40 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Click="Button_Click"
+            <Button
                 Grid.Column="0"
                 MinHeight="100"
                 Margin="20"
-                HorizontalAlignment="Stretch">
-                打开通风
+                HorizontalAlignment="Stretch"
+                Click="Button_Click"
+                Tag="SwitchLED">
+                开关采光
             </Button>
             <Button
                 Grid.Column="1"
                 MinHeight="100"
                 Margin="20"
-                HorizontalAlignment="Stretch">
-                打开采光
+                HorizontalAlignment="Stretch"
+                Click="Button_Click"
+                Tag="SwitchBuzzer">
+                开关蜂鸣器
             </Button>
             <Button
                 Grid.Column="2"
                 MinHeight="100"
                 Margin="20"
-                HorizontalAlignment="Stretch">
-                打开灌溉
+                HorizontalAlignment="Stretch"
+                Click="Button_Click"
+                Tag="SwitchFan">
+                开关通风
+                <Button.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem
+                            Click="MenuFlyoutItem_Click"
+                            Icon="Sync"
+                            Text="切换转向" />
+                    </MenuFlyout>
+                </Button.ContextFlyout>
             </Button>
         </Grid>
     </StackPanel>
