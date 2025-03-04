@@ -30,9 +30,13 @@ namespace HostMCU.UWP.ViewModels
 
             string pattern = @"(?<=WD:)\d+";
             Match match = Regex.Match(data, pattern);
-            if (match.Success)
+            if (match.Success && match.Value != "00")
             {
                 Temp_Text = match.Value;
+            }
+            else
+            {
+                Temp_Text = "NULL";
             }
 
             Content_Text += data;
