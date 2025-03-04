@@ -201,6 +201,10 @@ namespace HostMCU.UWP.Pages
 
                     await serialPortServere.InitializeSerialPortAsync(portName, baudRate, true);
                 }
+                else
+                {
+                    ToggleButton.IsChecked = false;
+                }
             }
         }
     }
