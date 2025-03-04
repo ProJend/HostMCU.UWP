@@ -7,7 +7,7 @@ namespace HostMCU.UWP.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        readonly SerialPortServer serialPortServere = ((App)Application.Current).serialPortServere;
+        private readonly SerialPortServer serialPortServere = ((App)Application.Current).serialPortServere;
         public bool? IsSerialPortOpen { get; set; }
 
         public string Content_Text { get; set; }
@@ -26,16 +26,16 @@ namespace HostMCU.UWP.ViewModels
         {
             IsSerialPortOpen = serialPortServere.IsSerialPortOpen;
 
-            var a = await serialPortServere.ReadDataAsync();
+            var data = await serialPortServere.ReadDataAsync();
 
             string pattern = @"(?<=WD:)\d+";
-            Match match = Regex.Match(a, pattern);
+            Match match = Regex.Match(data, pattern);
             if (match.Success)
             {
                 Temp_Text = match.Value;
             }
 
-            Content_Text += a;
+            Content_Text += data;
         }
     }
 }

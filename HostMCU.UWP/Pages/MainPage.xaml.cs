@@ -22,8 +22,8 @@ namespace HostMCU.UWP.Pages
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        SerialPortServer serialPortServere = ((App)Application.Current).serialPortServere;
-        MainViewModel mainViewModel = new();
+        private readonly SerialPortServer serialPortServere = ((App)Application.Current).serialPortServere;
+        private readonly MainViewModel mainViewModel = new();
 
         public MainPage()
         {
@@ -57,11 +57,11 @@ namespace HostMCU.UWP.Pages
         }
 
         // List of ValueTuple holding the Navigation Tag and the relative Navigation Page
-        private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
-        {
+        private readonly List<(string Tag, Type Page)> _pages =
+        [
             ("home", typeof(HomePage)),
-            ("history", typeof(DateHistory)),
-        };
+            ("history", typeof(HistoryPage)),
+        ];
 
         /// <summary>
         /// 应用内返回页面

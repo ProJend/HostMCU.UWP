@@ -1,8 +1,7 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using HostMCU.UWP.Servers;
-using System;
+﻿using HostMCU.UWP.Servers;
 using HostMCU.UWP.ViewModels;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -13,8 +12,8 @@ namespace HostMCU.UWP.Pages
     /// </summary>
     public sealed partial class HomePage : Page
     {
-        SerialPortServer serialPortServere = ((App)Application.Current).serialPortServere;
-        HomeViewModel homeViewModel = new();
+        private readonly SerialPortServer serialPortServere = ((App)Application.Current).serialPortServere;
+        private readonly HomeViewModel homeViewModel = new();
 
         public HomePage()
         {

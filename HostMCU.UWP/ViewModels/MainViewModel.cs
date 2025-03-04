@@ -1,15 +1,13 @@
 ﻿using HostMCU.UWP.Servers;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Windows.UI.Xaml;
 
 namespace HostMCU.UWP.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        SerialPortServer serialPortServere = ((App)Application.Current).serialPortServere;
+        private readonly SerialPortServer serialPortServere = ((App)Application.Current).serialPortServere;
         public bool? IsSerialPortOpen { get; set; }
 
         public string ToggleButton_Content => IsSerialPortOpen switch
@@ -41,7 +39,6 @@ namespace HostMCU.UWP.ViewModels
                 PortNameCollection = availablePorts;
             }
         }
-
     }
 
     public class ComboBoxOption(string name)
