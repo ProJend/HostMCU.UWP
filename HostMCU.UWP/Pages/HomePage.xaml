@@ -20,10 +20,11 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBlock
+                x:Name="Temp"
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-                <Run Text="NULL" />
+                <Run Text="{x:Bind homeViewModel.Temp_Text, Mode=OneWay}" />
                 <Run Text=" ℃" />
             </TextBlock>
             <StackPanel Grid.Column="1">
@@ -45,9 +46,12 @@
         </Grid>
         <TextBox
             x:Name="Content"
-            MinHeight="200" AcceptsReturn="True"
+            MinHeight="200"
+            MaxHeight="300"
             Margin="20"
             HorizontalAlignment="Stretch"
+            AcceptsReturn="True"
+            PlaceholderText="调试窗口"
             Text="{x:Bind homeViewModel.Content_Text, Mode=OneWay}" />
         <Grid>
             <Grid.ColumnDefinitions>

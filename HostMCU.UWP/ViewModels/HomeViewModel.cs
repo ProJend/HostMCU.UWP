@@ -1,5 +1,6 @@
 ﻿using HostMCU.UWP.Servers;
 using System;
+using System.Text.RegularExpressions;
 using Windows.UI.Xaml;
 
 namespace HostMCU.UWP.ViewModels
@@ -10,8 +11,10 @@ namespace HostMCU.UWP.ViewModels
         public bool? IsSerialPortOpen { get; set; }
 
         public string Content_Text { get; set; }
+        public string Temp_Text { get; set; }
 
-        private readonly DispatcherTimer _UpdateSerialPortStatusTimer = new() { Interval = TimeSpan.FromSeconds(60) };
+
+        private readonly DispatcherTimer _UpdateSerialPortStatusTimer = new() { Interval = TimeSpan.FromSeconds(5) };
 
         public HomeViewModel()
         {
@@ -23,7 +26,16 @@ namespace HostMCU.UWP.ViewModels
         {
             IsSerialPortOpen = serialPortServere.IsSerialPortOpen;
 
-            Content_Text += await serialPortServere.ReadDataAsync();
+            var a = await serialPortServere.ReadDataAsync();
+
+            string pattern = @"(?<=WD:)\d+";
+            Match match = Regex.Match(a, pattern);
+            if (match.Success)
+            {
+                Temp_Text = match.Value;
+            }
+
+            Content_Text += a;
         }
     }
 }
