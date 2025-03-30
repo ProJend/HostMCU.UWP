@@ -9,7 +9,7 @@
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="HistoryModelTemplate" x:DataType="model:HistoryModel">
-            <StackPanel Padding="10">
+            <StackPanel Padding="40,10">
                 <TextBlock FontSize="16" TextWrapping="Wrap">25 ℃</TextBlock>
                 <TextBlock Text="{x:Bind Date}" TextWrapping="Wrap" />
             </StackPanel>

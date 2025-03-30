@@ -8,7 +8,9 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
-    <StackPanel>
+    <ScrollViewer Margin="0,26,0,0">
+        <StackPanel Padding="0,18,0,0">
+            <TextBlock Margin="56,0,0,0" Style="{ThemeResource TitleTextBlockStyle}">温度：</TextBlock>
         <Grid
             Margin="20"
             Padding="20"
@@ -109,7 +111,7 @@
             <ToggleButton
                 x:Name="SwitchLED"
                 Grid.Column="0"
-                MinHeight="100"
+                    MinHeight="113"
                 Margin="20"
                 HorizontalAlignment="Stretch"
                 Click="ToggleButton_Click"
@@ -118,7 +120,7 @@
             <ToggleButton
                 x:Name="SwitchBuzzer"
                 Grid.Column="1"
-                MinHeight="100"
+                    MinHeight="113"
                 Margin="20"
                 HorizontalAlignment="Stretch"
                 Click="ToggleButton_Click"
@@ -127,7 +129,7 @@
             <ToggleButton
                 x:Name="SwitchFan"
                 Grid.Column="2"
-                MinHeight="100"
+                    MinHeight="113"
                 Margin="20"
                 HorizontalAlignment="Stretch"
                 Click="ToggleButton_Click"
@@ -155,4 +157,5 @@
             </ToggleButton>
         </Grid>
     </StackPanel>
+    </ScrollViewer>
 </Page>
