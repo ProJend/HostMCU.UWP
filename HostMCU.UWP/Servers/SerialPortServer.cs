@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.SerialCommunication;
@@ -168,6 +169,16 @@ namespace HostMCU.UWP.Servers
         {
             if (IsSerialPortOpen == true)
                 IsSerialPortOpen = false;
+        }
+
+        public string GetValueFromPattern(string data, string pattern)
+        {
+            Match match = Regex.Match(data, pattern);
+            if (match.Success && match.Value != "00")
+            {
+                return match.Value;
+            }
+            return "NULL";
         }
     }
 }

@@ -44,6 +44,42 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
+        <TextBlock Margin="56,0,0,0" Style="{ThemeResource TitleTextBlockStyle}">湿度：</TextBlock>
+        <Grid
+            Margin="20"
+            Padding="20"
+            VerticalAlignment="Top"
+            Background="{ThemeResource ControlFillColorDefaultBrush}"
+            CornerRadius="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                x:Name="Mois"
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Run Text="{x:Bind homeViewModel.Mois_Text, Mode=OneWay}" />
+                <Run Text=" ℃" />
+            </TextBlock>
+            <StackPanel Grid.Column="1">
+                <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                    <TextBlock Margin="0,5,0,0">湿度上限：</TextBlock>
+                    <muxc:NumberBox
+                        MinWidth="200"
+                        SpinButtonPlacementMode="Inline"
+                        Text="45" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0,5,0,0">湿度下限：</TextBlock>
+                    <muxc:NumberBox
+                        MinWidth="200"
+                        SpinButtonPlacementMode="Inline"
+                        Text="-10" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
         <TextBox
             x:Name="Content"
             MinHeight="200"
