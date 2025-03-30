@@ -80,15 +80,26 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
+            <Grid Margin="56,0,20,0">
+                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">调试窗口：</TextBlock>
+                <CheckBox
+                    x:Name="OnlyInstructionInfo"
+                    Margin="0,0,2,-4"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    IsChecked="{x:Bind homeViewModel.IsOnlyInstructionInfo, Mode=TwoWay}">
+                    仅查看指令反馈信息
+                </CheckBox>
+            </Grid>
         <TextBox
             x:Name="Content"
-            MinHeight="200"
-            MaxHeight="300"
+                Height="113"
             Margin="20"
+                Padding="35,5"
             HorizontalAlignment="Stretch"
             AcceptsReturn="True"
-            PlaceholderText="调试窗口"
-            Text="{x:Bind homeViewModel.Content_Text, Mode=OneWay}" />
+                PlaceholderText="无更多信息"
+                Text="{x:Bind homeViewModel.Content_Text, Mode=TwoWay}" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />

@@ -1,4 +1,5 @@
-﻿using HostMCU.UWP.Servers;
+﻿using HostMCU.UWP.Helpers;
+using HostMCU.UWP.Servers;
 using System;
 using Windows.UI.Xaml;
 
@@ -9,26 +10,33 @@ namespace HostMCU.UWP.ViewModels
         private readonly SerialPortServer serialPortServere = ((App)Application.Current).serialPortServere;
         public bool? IsSerialPortOpen { get; set; }
 
+        public bool IsOnlyInstructionInfo { get; set; }
         public string Content_Text { get; set; }
         public string Temp_Text { get; set; }
         public string Mois_Text { get; set; }
 
-        private readonly DispatcherTimer _UpdateSerialPortStatusTimer = new() { Interval = TimeSpan.FromSeconds(1) };
+        private readonly DispatcherTimer _UpdateSerialPortStatusTimer = new() { Interval = TimeSpan.FromSeconds(2) };
 
         public HomeViewModel()
         {
+            IsOnlyInstructionInfo = true;
+
             _UpdateSerialPortStatusTimer.Tick += UpdateSerialPortStatusTimer_Tick;
             _UpdateSerialPortStatusTimer.Start();
         }
 
         private async void UpdateSerialPortStatusTimer_Tick(object sender, object e)
         {
+            DataProcessor dataProcessor = new();
             IsSerialPortOpen = serialPortServere.IsSerialPortOpen;
 
             var data = await serialPortServere.ReadDataAsync();
-            Temp_Text = serialPortServere.GetValueFromPattern(data, @"(?<=WD:)\d+");
-            Mois_Text = serialPortServere.GetValueFromPattern(data, @"(?<=SD:)\d+");
-            Content_Text += data;
+            Temp_Text = dataProcessor.GetValueFromPattern(data, @"(?<=WD:)\d+");
+            Mois_Text = dataProcessor.GetValueFromPattern(data, @"(?<=SD:)\d+");
+            if (!IsOnlyInstructionInfo)
+            {
+                Content_Text += data;
+            }
         }
     }
 }
