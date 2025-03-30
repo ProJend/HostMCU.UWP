@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HostMCU.UWP.Pages;
+using HostMCU.UWP.Servers;
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
@@ -7,9 +9,6 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using HostMCU.UWP.Pages;
-using HostMCU.UWP.Servers;
-using System.Runtime;
 
 namespace HostMCU.UWP
 {
@@ -106,6 +105,11 @@ namespace HostMCU.UWP
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            uISettings.ColorValuesChanged += (setting, args) =>
+            {
+                titleBar.ButtonForegroundColor = setting.GetColorValue(UIColorType.Foreground);
+            };
         }
+        private static readonly UISettings uISettings = new();
     }
 }
