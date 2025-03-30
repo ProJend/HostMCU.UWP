@@ -59,41 +59,53 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button
+            <ToggleButton
+                x:Name="SwitchLED"
                 Grid.Column="0"
                 MinHeight="100"
                 Margin="20"
                 HorizontalAlignment="Stretch"
-                Click="Button_Click"
-                Tag="SwitchLED">
-                开关采光
-            </Button>
-            <Button
+                Click="ToggleButton_Click"
+                Content="{Binding IsChecked, ElementName=SwitchLED, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchLED}"
+                Tag="SwitchLED" />
+            <ToggleButton
+                x:Name="SwitchBuzzer"
                 Grid.Column="1"
                 MinHeight="100"
                 Margin="20"
                 HorizontalAlignment="Stretch"
-                Click="Button_Click"
-                Tag="SwitchBuzzer">
-                开关蜂鸣器
-            </Button>
-            <Button
+                Click="ToggleButton_Click"
+                Content="{Binding IsChecked, ElementName=SwitchBuzzer, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchBuzzer}"
+                Tag="SwitchBuzzer" />
+            <ToggleButton
+                x:Name="SwitchFan"
                 Grid.Column="2"
                 MinHeight="100"
                 Margin="20"
                 HorizontalAlignment="Stretch"
-                Click="Button_Click"
-                Tag="SwitchFan">
-                开关通风
-                <Button.ContextFlyout>
+                Click="ToggleButton_Click"
+                Tag="SwitchFan"
+                ToolTipService.ToolTip="右击切换转向">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <TextBlock Text="{Binding IsChecked, ElementName=SwitchFan, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchFan}" TextAlignment="Center" />
+                        <TextBlock
+                            FontSize="13"
+                            Foreground="Gray"
+                            Text="{Binding IsDoubleTapEnabled, ElementName=SwitchFanDirection, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchFanDirection}"
+                            TextAlignment="Center" />
+                    </StackPanel>
+                </ToggleButton.Content>
+                <ToggleButton.ContextFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem
+                            x:Name="SwitchFanDirection"
                             Click="MenuFlyoutItem_Click"
                             Icon="Sync"
                             Text="切换转向" />
                     </MenuFlyout>
-                </Button.ContextFlyout>
-            </Button>
+                </ToggleButton.ContextFlyout>
+            </ToggleButton>
         </Grid>
     </StackPanel>
 </Page>

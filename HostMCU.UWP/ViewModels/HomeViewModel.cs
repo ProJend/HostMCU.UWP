@@ -14,7 +14,7 @@ namespace HostMCU.UWP.ViewModels
         public string Temp_Text { get; set; }
 
 
-        private readonly DispatcherTimer _UpdateSerialPortStatusTimer = new() { Interval = TimeSpan.FromSeconds(5) };
+        private readonly DispatcherTimer _UpdateSerialPortStatusTimer = new() { Interval = TimeSpan.FromSeconds(1) };
 
         public HomeViewModel()
         {

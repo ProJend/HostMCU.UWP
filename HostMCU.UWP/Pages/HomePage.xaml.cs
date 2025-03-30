@@ -20,7 +20,7 @@ namespace HostMCU.UWP.Pages
             this.InitializeComponent();
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             FrameworkElement button = sender as FrameworkElement;
             switch (button.Tag as string)
@@ -34,6 +34,7 @@ namespace HostMCU.UWP.Pages
         private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
             await serialPortServere.WriteDataAsync("4");
+            SwitchFanDirection.IsDoubleTapEnabled = !SwitchFanDirection.IsDoubleTapEnabled;
         }
     }
 }
