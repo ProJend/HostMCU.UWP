@@ -4,14 +4,17 @@ namespace HostMCU.UWP.Helpers
 {
     public class DataProcessor
     {
-        public string GetValueFromPattern(string data, string pattern)
+        public double? GetValueFromPattern(string data, string pattern)
         {
             Match match = Regex.Match(data, pattern);
             if (match.Success && match.Value != "00")
             {
-                return match.Value;
+                if (double.TryParse(match.Value, out double result))
+                {
+                    return result;
+                }
             }
-            return "NULL";
+            return null;
         }
 
         public string RemoveLineWithPattern(string data, string pattern)

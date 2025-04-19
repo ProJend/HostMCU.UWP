@@ -1,4 +1,4 @@
-﻿namespace HostMCU.UWP.Models
+﻿namespace HostMCU.UWP.Models.Model
 {
     public class HistoryModel
     {

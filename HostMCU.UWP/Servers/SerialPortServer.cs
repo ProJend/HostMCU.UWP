@@ -1,4 +1,5 @@
-﻿using HostMCU.UWP.ViewModels;
+﻿using HostMCU.UWP.Models.Type;
+using HostMCU.UWP.ViewModels;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -14,13 +15,15 @@ namespace HostMCU.UWP.Servers
         public SerialDevice serialPort;
 
         public bool? IsSerialPortOpen;
+        private string FullPortName;
         private string PortName;
         private uint BaudRate;
 
-        public async Task InitializeSerialPortAsync(string portName, uint baudRate, bool isNeedRefrushParameter = false)
+        public async Task InitializeSerialPortAsync(string fullPortName, string portName, uint baudRate, bool isNeedRefrushParameter = false)
         {
             if (isNeedRefrushParameter)
             {
+                FullPortName = fullPortName;
                 PortName = portName;
                 BaudRate = baudRate;
             }
@@ -40,17 +43,24 @@ namespace HostMCU.UWP.Servers
                     serialPort.ReadTimeout = TimeSpan.FromMilliseconds(1000);
                     serialPort.WriteTimeout = TimeSpan.FromMilliseconds(1000);
 
-                    Debug.WriteLine("串口已打开: " + portName);
+                    if (isNeedRefrushParameter)
+                    {
+                        NotificationServer.ShowMessageToast("串口已打开", FullPortName, 3);
+                    }
+                    else
+                    {
+                        NotificationServer.ShowMessageToast("串口已重连", FullPortName, 3);
+                    }
                     IsSerialPortOpen = true;
                 }
                 else
                 {
-                    Debug.WriteLine("无法打开串口: " + portName);
+                    NotificationServer.ShowMessageToast("无法打开串口", FullPortName, 3);
                 }
             }
             else
             {
-                Debug.WriteLine("未找到串口设备: " + portName);
+                NotificationServer.ShowMessageToast("未找到串口设备", FullPortName, 3);
             }
         }
 
@@ -60,12 +70,12 @@ namespace HostMCU.UWP.Servers
             {
                 serialPort.Dispose();
                 serialPort = null;
-                Debug.WriteLine("串口已关闭");
+                NotificationServer.ShowMessageToast("串口已关闭", FullPortName, 3);
                 IsSerialPortOpen = false;
             }
             else
             {
-                Debug.WriteLine("串口未打开");
+                NotificationServer.ShowMessageToast("串口未打开", FullPortName, 3);
             }
         }
 
@@ -90,8 +100,9 @@ namespace HostMCU.UWP.Servers
                 catch (Exception ex)
                 {
                     Debug.WriteLine("读取数据时出错: " + ex.Message);
+                    NotificationServer.ShowToast(ToastType.Reconnecting);
 
-                    await InitializeSerialPortAsync(PortName, BaudRate);
+                    await InitializeSerialPortAsync(FullPortName, PortName, BaudRate);
                 }
             }
             else
@@ -121,21 +132,9 @@ namespace HostMCU.UWP.Servers
             catch (Exception ex)
             {
                 Debug.WriteLine("发送数据时出错: " + ex.Message);
+                NotificationServer.ShowToast(ToastType.Reconnecting);
 
-                await InitializeSerialPortAsync(PortName, BaudRate);
-
-                if (serialPort != null)
-                {
-                    var dataWriter = new DataWriter(serialPort.OutputStream);
-                    dataWriter.WriteString(data);
-                    await dataWriter.StoreAsync();
-                    dataWriter.DetachStream();
-                    Debug.WriteLine("数据已发送: " + data);
-                }
-                else
-                {
-                    Debug.WriteLine("串口未打开");
-                }
+                await InitializeSerialPortAsync(FullPortName, PortName, BaudRate);
             }
 
         }

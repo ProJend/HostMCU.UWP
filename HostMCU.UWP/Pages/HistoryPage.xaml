@@ -5,7 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:HostMCU.UWP.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="using:HostMCU.UWP.Models"
+    xmlns:model="using:HostMCU.UWP.Models.Model"
+    xmlns:viewmodels="using:HostMCU.UWP.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:HistoryViewModel}"
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="HistoryModelTemplate" x:DataType="model:HistoryModel">

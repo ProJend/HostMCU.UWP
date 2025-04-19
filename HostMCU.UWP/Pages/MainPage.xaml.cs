@@ -198,7 +198,7 @@ namespace HostMCU.UWP.Pages
                     string portName = match.Value;
                     uint.TryParse(selectedItem2.Content as string, out uint baudRate);
 
-                    await serialPortServere.InitializeSerialPortAsync(portName, baudRate, true);
+                    await serialPortServere.InitializeSerialPortAsync(selectedItem.Name, portName, baudRate, true);
                 }
                 else
                 {

@@ -12,8 +12,88 @@ namespace HostMCU.UWP.ViewModels
 
         public bool IsOnlyInstructionInfo { get; set; }
         public string Content_Text { get; set; }
-        public string Temp_Text { get; set; }
-        public string Mois_Text { get; set; }
+
+        private double? temp_Value { get; set; }
+        public double? Temp_Value
+        {
+            get => temp_Value;
+            set
+            {
+                temp_Value = value;
+                NeedShowTempWarning(value);
+            }
+        }
+
+        private double min_Temp { get; set; }
+        public double Min_Temp
+        {
+            get => min_Temp;
+            set
+            {
+                min_Temp = value;
+                NeedShowTempWarning(value);
+            }
+        }
+
+        private double max_Temp { get; set; }
+        public double Max_Temp
+        {
+            get => max_Temp;
+            set
+            {
+                max_Temp = value;
+                NeedShowTempWarning(value);
+            }
+        }
+
+        private double? mois_Value { get; set; }
+        public double? Mois_Value
+        {
+            get => mois_Value;
+            set
+            {
+                mois_Value = value;
+                NeedShowMoisWarning(value);
+            }
+        }
+
+        private double min_Mois { get; set; }
+        public double Min_Mois
+        {
+            get => min_Mois;
+            set
+            {
+                min_Mois = value;
+                NeedShowMoisWarning(value);
+            }
+        }
+
+        private double max_Mois { get; set; }
+        public double Max_Mois
+        {
+            get => max_Mois;
+            set
+            {
+                max_Mois = value;
+                NeedShowMoisWarning(value);
+            }
+        }
+
+        private void NeedShowTempWarning(double? value)
+        {
+            if (value < Min_Temp || value > Max_Temp)
+            {
+                new NotificationServer().ShowTempWarning(value);
+            }
+        }
+
+        private void NeedShowMoisWarning(double? value)
+        {
+            if (value < Min_Temp || value > Max_Temp)
+            {
+                new NotificationServer().ShowMoisWarning(value);
+            }
+        }
 
         private readonly DispatcherTimer _UpdateSerialPortStatusTimer = new() { Interval = TimeSpan.FromSeconds(2) };
 
@@ -31,8 +111,8 @@ namespace HostMCU.UWP.ViewModels
             IsSerialPortOpen = serialPortServere.IsSerialPortOpen;
 
             var data = await serialPortServere.ReadDataAsync();
-            Temp_Text = dataProcessor.GetValueFromPattern(data, @"(?<=WD:)\d+");
-            Mois_Text = dataProcessor.GetValueFromPattern(data, @"(?<=SD:)\d+");
+            Temp_Value = dataProcessor.GetValueFromPattern(data, @"(?<=WD:)\d+");
+            Mois_Value = dataProcessor.GetValueFromPattern(data, @"(?<=SD:)\d+");
             if (!IsOnlyInstructionInfo)
             {
                 Content_Text += data;

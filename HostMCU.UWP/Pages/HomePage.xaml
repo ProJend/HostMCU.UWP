@@ -25,24 +25,29 @@
                 x:Name="Temp"
                 Grid.Column="0"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-                <Run Text="{x:Bind homeViewModel.Temp_Text, Mode=OneWay}" />
+                    VerticalAlignment="Center"
+                    Tag="Temp">
+                    <Run Text="{x:Bind homeViewModel.Temp_Value, Mode=OneWay}" />
                 <Run Text=" ℃" />
             </TextBlock>
             <StackPanel Grid.Column="1">
                 <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
                     <TextBlock Margin="0,5,0,0">温度上限：</TextBlock>
                     <muxc:NumberBox
+                            x:Name="MaxTemp"
                         MinWidth="200"
                         SpinButtonPlacementMode="Inline"
-                        Text="45" />
+                            Tag="MaxTemp"
+                            Text="{x:Bind homeViewModel.Max_Temp, Mode=TwoWay}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="0,5,0,0">温度下限：</TextBlock>
                     <muxc:NumberBox
+                            x:Name="MinTemp"
                         MinWidth="200"
                         SpinButtonPlacementMode="Inline"
-                        Text="-10" />
+                            Tag="MinTemp"
+                            Text="{x:Bind homeViewModel.Min_Temp, Mode=TwoWay}" />
                 </StackPanel>
             </StackPanel>
         </Grid>
@@ -61,24 +66,29 @@
                 x:Name="Mois"
                 Grid.Column="0"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-                <Run Text="{x:Bind homeViewModel.Mois_Text, Mode=OneWay}" />
+                    VerticalAlignment="Center"
+                    Tag="Mois">
+                    <Run Text="{x:Bind homeViewModel.Mois_Value, Mode=OneWay}" />
                 <Run Text=" ℃" />
             </TextBlock>
             <StackPanel Grid.Column="1">
                 <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
                     <TextBlock Margin="0,5,0,0">湿度上限：</TextBlock>
                     <muxc:NumberBox
+                            x:Name="MaxMois"
                         MinWidth="200"
                         SpinButtonPlacementMode="Inline"
-                        Text="45" />
+                            Tag="MaxMois"
+                            Text="{x:Bind homeViewModel.Max_Mois, Mode=TwoWay}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="0,5,0,0">湿度下限：</TextBlock>
                     <muxc:NumberBox
+                            x:Name="MinMois"
                         MinWidth="200"
                         SpinButtonPlacementMode="Inline"
-                        Text="-10" />
+                            Tag="MinMois"
+                            Text="{x:Bind homeViewModel.Min_Mois, Mode=TwoWay}" />
                 </StackPanel>
             </StackPanel>
         </Grid>
