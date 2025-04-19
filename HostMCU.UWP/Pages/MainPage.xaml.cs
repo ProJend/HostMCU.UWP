@@ -168,7 +168,7 @@ namespace HostMCU.UWP.Pages
                 var item = _pages.FirstOrDefault(p => p.Page == e.SourcePageType);
                 NavView.SelectedItem = NavView.MenuItems.OfType<muxc.NavigationViewItem>().First(n => n.Tag.Equals(item.Tag));
                 var header = ((muxc.NavigationViewItem)NavView.SelectedItem)?.Content?.ToString().ToUpper();
-                NavView.AlwaysShowHeader = header != "主页";
+                NavView.AlwaysShowHeader = header != "仪表盘";
                 NavView.Header = header;
             }
         }

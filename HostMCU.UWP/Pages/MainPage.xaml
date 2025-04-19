@@ -23,10 +23,12 @@
             PaneDisplayMode="Auto"
             PaneTitle="温控上位机">
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem
-                    Content="主页"
-                    Icon="Home"
-                    Tag="home" />
+                <muxc:NavigationViewItem Content="仪表盘" Tag="home">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Glyph="&#xE9D9;" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+
                 <muxc:NavigationViewItem
                     Content="历史记录"
                     Icon="Calendar"
