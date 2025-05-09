@@ -1,4 +1,5 @@
 ﻿using HostMCU.UWP.Models.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
@@ -11,7 +12,6 @@ namespace HostMCU.UWP.ViewModels
     public class HistoryViewModel : ObservableCollection<HistoryModel>, ISupportIncrementalLoading
     {
         public IAsyncOperation<LoadMoreItemsResult> LoadMoreItemsAsync(uint count) => AsyncInfo.Run(c => LoadMoreItemsAsyncCore(c, count));
-
 
         public bool HasMoreItems => true;
 
@@ -26,7 +26,12 @@ namespace HostMCU.UWP.ViewModels
             }
             else
             {
-                var latestItem = new HistoryModel { Temperature = 23, Date = "2025-01-01" };
+                Random random = new Random();
+
+                double temperature = Math.Round(random.NextDouble() * (28 - 26) + 26, 2);
+                double moisture = random.Next(70, 81);
+
+                var latestItem = new HistoryModel { Temperature = temperature, Moisture = moisture, Date = "2025-01-01" };
                 Add(latestItem);
             }
             return res;

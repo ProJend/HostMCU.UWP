@@ -12,7 +12,16 @@
     <Page.Resources>
         <DataTemplate x:Key="HistoryModelTemplate" x:DataType="model:HistoryModel">
             <StackPanel Padding="40,10">
-                <TextBlock FontSize="16" TextWrapping="Wrap">25 ℃</TextBlock>
+                <TextBlock FontSize="16" TextWrapping="Wrap">
+                    <Run>温度：</Run>
+                    <Run Text="{x:Bind Temperature}" />
+                    <Run Text="℃" />
+                </TextBlock>
+                <TextBlock FontSize="16" TextWrapping="Wrap">
+                    <Run>湿度：</Run>
+                    <Run Text="{x:Bind Moisture}" />
+                    <Run Text="%" />
+                </TextBlock>
                 <TextBlock Text="{x:Bind Date}" TextWrapping="Wrap" />
                 <StackPanel.ContextFlyout>
                     <MenuFlyout>
