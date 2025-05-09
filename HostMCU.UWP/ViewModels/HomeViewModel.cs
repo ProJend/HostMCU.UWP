@@ -31,7 +31,7 @@ namespace HostMCU.UWP.ViewModels
             set
             {
                 min_Temp = value;
-                NeedShowTempWarning(value);
+                NeedShowTempWarning(Temp_Value);
             }
         }
 
@@ -42,7 +42,7 @@ namespace HostMCU.UWP.ViewModels
             set
             {
                 max_Temp = value;
-                NeedShowTempWarning(value);
+                NeedShowTempWarning(Temp_Value);
             }
         }
 
@@ -64,7 +64,7 @@ namespace HostMCU.UWP.ViewModels
             set
             {
                 min_Mois = value;
-                NeedShowMoisWarning(value);
+                NeedShowMoisWarning(Mois_Value);
             }
         }
 
@@ -75,7 +75,7 @@ namespace HostMCU.UWP.ViewModels
             set
             {
                 max_Mois = value;
-                NeedShowMoisWarning(value);
+                NeedShowMoisWarning(Mois_Value);
             }
         }
 
