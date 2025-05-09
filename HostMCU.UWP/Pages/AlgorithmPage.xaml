@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="HostMCU.UWP.Pages.AlgorithmPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:win2d="using:Microsoft.Graphics.Canvas.UI.Xaml">
+
+    <Grid>
+        <Viewbox Margin="43" VerticalAlignment="Top">
+            <win2d:CanvasControl
+                x:Name="ChartCanvas"
+                Width="800"
+                Height="400"
+                Draw="OnChartDraw" />
+        </Viewbox>
+        <StackPanel
+            Margin="50"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <muxc:NumberBox
+                MinWidth="200"
+                Header="P"
+                SpinButtonPlacementMode="Compact"
+                Value="0.5" />
+            <muxc:NumberBox
+                MinWidth="200"
+                Margin="20,0"
+                Header="I"
+                SpinButtonPlacementMode="Compact"
+                Value="0.1" />
+            <muxc:NumberBox
+                MinWidth="200"
+                Header="D"
+                SpinButtonPlacementMode="Compact" />
+        </StackPanel>
+    </Grid>
+</Page>
