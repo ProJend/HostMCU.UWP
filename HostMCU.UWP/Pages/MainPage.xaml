@@ -64,13 +64,14 @@
                             x:Name="BaudRate"
                             Grid.Column="1"
                             HorizontalAlignment="Stretch"
-                            SelectedIndex="4">
+                            SelectedIndex="5">
                             <ComboBox.Items>
                                 <ComboBoxItem Content="1200" />
                                 <ComboBoxItem Content="2400" />
                                 <ComboBoxItem Content="4800" />
                                 <ComboBoxItem Content="9600" />
                                 <ComboBoxItem Content="19200" />
+                                <ComboBoxItem Content="28800" />
                                 <ComboBoxItem Content="38400" />
                                 <ComboBoxItem Content="57600" />
                                 <ComboBoxItem Content="115200" />

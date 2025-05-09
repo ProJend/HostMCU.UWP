@@ -103,6 +103,9 @@ namespace HostMCU.UWP.ViewModels
 
             _UpdateSerialPortStatusTimer.Tick += UpdateSerialPortStatusTimer_Tick;
             _UpdateSerialPortStatusTimer.Start();
+
+            Max_Mois = 100;
+            Max_Temp = 100;
         }
 
         private async void UpdateSerialPortStatusTimer_Tick(object sender, object e)

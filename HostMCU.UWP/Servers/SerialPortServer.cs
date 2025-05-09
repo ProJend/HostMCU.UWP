@@ -168,5 +168,27 @@ namespace HostMCU.UWP.Servers
             if (IsSerialPortOpen == true)
                 IsSerialPortOpen = false;
         }
+
+        public async void SwitchLED(double pwmValue) => await WriteDataAsync(
+            pwmValue == 0 ? "LED+\r\n" :
+            pwmValue == 100 ? "LED-\r\n" :
+            $"LED{pwmValue}\r\n"
+            );
+
+        public async void SwitchBuzzer(double pwmValue) => await WriteDataAsync(
+            pwmValue == 0 ? "BUZ+\r\n" :
+            pwmValue == 100 ? "BUZ-\r\n" :
+            $"BUZ{pwmValue}\r\n"
+            );
+
+        public async void SwitchFan(double pwmValue, bool isForward)
+        {
+            string direction = isForward ? "-" : "+";
+            await WriteDataAsync(
+                pwmValue == 0 ? "FAN=\r\n" :
+                pwmValue == 100 ? $"FAN{direction}\r\n" :
+                $"FAN{pwmValue}{direction}\r\n"
+            );
+        }
     }
 }

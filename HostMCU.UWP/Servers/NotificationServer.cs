@@ -83,17 +83,17 @@ namespace HostMCU.UWP.Servers
             }
         }
 
-        public async void ShowTempWarning(double? value = null)
+        public void ShowTempWarning(double? value = null)
         {
             if (serialPortServere.IsSerialPortOpen.GetValueOrDefault())
-                await serialPortServere.WriteDataAsync("2");
+                serialPortServere.SwitchBuzzer(100);
             ShowToast(ToastType.TempWarning, value);
         }
 
-        public async void ShowMoisWarning(double? value = null)
+        public void ShowMoisWarning(double? value = null)
         {
             if (serialPortServere.IsSerialPortOpen.GetValueOrDefault())
-                await serialPortServere.WriteDataAsync("2");
+                serialPortServere.SwitchBuzzer(100);
             ShowToast(ToastType.TempWarning, value);
         }
     }

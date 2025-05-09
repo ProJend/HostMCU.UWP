@@ -11,87 +11,87 @@
     <ScrollViewer Margin="0,26,0,0">
         <StackPanel Padding="0,18,0,0">
             <TextBlock Margin="56,0,0,0" Style="{ThemeResource TitleTextBlockStyle}">温度：</TextBlock>
-        <Grid
-            Margin="20"
-            Padding="20"
-            VerticalAlignment="Top"
-            Background="{ThemeResource ControlFillColorDefaultBrush}"
-            CornerRadius="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                x:Name="Temp"
-                Grid.Column="0"
-                HorizontalAlignment="Center"
+            <Grid
+                Margin="20"
+                Padding="20"
+                VerticalAlignment="Top"
+                Background="{ThemeResource ControlFillColorDefaultBrush}"
+                CornerRadius="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    x:Name="Temp"
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Tag="Temp">
                     <Run Text="{x:Bind homeViewModel.Temp_Value, Mode=OneWay}" />
-                <Run Text=" ℃" />
-            </TextBlock>
-            <StackPanel Grid.Column="1">
-                <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
-                    <TextBlock Margin="0,5,0,0">温度上限：</TextBlock>
-                    <muxc:NumberBox
+                    <Run Text=" ℃" />
+                </TextBlock>
+                <StackPanel Grid.Column="1">
+                    <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                        <TextBlock Margin="0,5,0,0">温度上限：</TextBlock>
+                        <muxc:NumberBox
                             x:Name="MaxTemp"
-                        MinWidth="200"
-                        SpinButtonPlacementMode="Inline"
+                            MinWidth="200"
+                            SpinButtonPlacementMode="Inline"
                             Tag="MaxTemp"
-                            Text="{x:Bind homeViewModel.Max_Temp, Mode=TwoWay}" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,5,0,0">温度下限：</TextBlock>
-                    <muxc:NumberBox
+                            Value="{x:Bind homeViewModel.Max_Temp, Mode=TwoWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,5,0,0">温度下限：</TextBlock>
+                        <muxc:NumberBox
                             x:Name="MinTemp"
-                        MinWidth="200"
-                        SpinButtonPlacementMode="Inline"
+                            MinWidth="200"
+                            SpinButtonPlacementMode="Inline"
                             Tag="MinTemp"
-                            Text="{x:Bind homeViewModel.Min_Temp, Mode=TwoWay}" />
+                            Value="{x:Bind homeViewModel.Min_Temp, Mode=TwoWay}" />
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </Grid>
-        <TextBlock Margin="56,0,0,0" Style="{ThemeResource TitleTextBlockStyle}">湿度：</TextBlock>
-        <Grid
-            Margin="20"
-            Padding="20"
-            VerticalAlignment="Top"
-            Background="{ThemeResource ControlFillColorDefaultBrush}"
-            CornerRadius="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                x:Name="Mois"
-                Grid.Column="0"
-                HorizontalAlignment="Center"
+            </Grid>
+            <TextBlock Margin="56,0,0,0" Style="{ThemeResource TitleTextBlockStyle}">湿度：</TextBlock>
+            <Grid
+                Margin="20"
+                Padding="20"
+                VerticalAlignment="Top"
+                Background="{ThemeResource ControlFillColorDefaultBrush}"
+                CornerRadius="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    x:Name="Mois"
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Tag="Mois">
                     <Run Text="{x:Bind homeViewModel.Mois_Value, Mode=OneWay}" />
-                <Run Text=" ℃" />
-            </TextBlock>
-            <StackPanel Grid.Column="1">
-                <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
-                    <TextBlock Margin="0,5,0,0">湿度上限：</TextBlock>
-                    <muxc:NumberBox
+                    <Run Text=" ℃" />
+                </TextBlock>
+                <StackPanel Grid.Column="1">
+                    <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                        <TextBlock Margin="0,5,0,0">湿度上限：</TextBlock>
+                        <muxc:NumberBox
                             x:Name="MaxMois"
-                        MinWidth="200"
-                        SpinButtonPlacementMode="Inline"
+                            MinWidth="200"
+                            SpinButtonPlacementMode="Inline"
                             Tag="MaxMois"
-                            Text="{x:Bind homeViewModel.Max_Mois, Mode=TwoWay}" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,5,0,0">湿度下限：</TextBlock>
-                    <muxc:NumberBox
+                            Value="{x:Bind homeViewModel.Max_Mois, Mode=TwoWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,5,0,0">湿度下限：</TextBlock>
+                        <muxc:NumberBox
                             x:Name="MinMois"
-                        MinWidth="200"
-                        SpinButtonPlacementMode="Inline"
+                            MinWidth="200"
+                            SpinButtonPlacementMode="Inline"
                             Tag="MinMois"
-                            Text="{x:Bind homeViewModel.Min_Mois, Mode=TwoWay}" />
+                            Value="{x:Bind homeViewModel.Min_Mois, Mode=TwoWay}" />
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </Grid>
+            </Grid>
             <Grid Margin="56,0,20,0">
                 <TextBlock Style="{ThemeResource TitleTextBlockStyle}">调试窗口：</TextBlock>
                 <CheckBox
@@ -103,69 +103,100 @@
                     仅查看指令反馈信息
                 </CheckBox>
             </Grid>
-        <TextBox
-            x:Name="Content"
+            <TextBox
+                x:Name="Content"
                 Height="113"
-            Margin="20"
+                Margin="20"
                 Padding="35,5"
-            HorizontalAlignment="Stretch"
-            AcceptsReturn="True"
+                HorizontalAlignment="Stretch"
+                AcceptsReturn="True"
                 PlaceholderText="无更多信息"
                 Text="{x:Bind homeViewModel.Content_Text, Mode=TwoWay}" />
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <ToggleButton
-                x:Name="SwitchLED"
-                Grid.Column="0"
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ToggleButton
+                    x:Name="SwitchLED"
+                    Grid.Column="0"
                     MinHeight="113"
-                Margin="20"
-                HorizontalAlignment="Stretch"
-                Click="ToggleButton_Click"
-                Content="{Binding IsChecked, ElementName=SwitchLED, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchLED}"
-                Tag="SwitchLED" />
-            <ToggleButton
-                x:Name="SwitchBuzzer"
-                Grid.Column="1"
+                    Margin="20"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Click="ToggleButton_Click"
+                    Tag="SwitchLED">
+                    <ToggleButton.Content>
+                        <StackPanel>
+                            <TextBlock TextAlignment="Center">点击</TextBlock>
+                            <TextBlock Text="{Binding IsChecked, ElementName=SwitchLED, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchLED}" TextAlignment="Center" />
+                            <Slider
+                                x:Name="PWMSwitchLED"
+                                Foreground="{ThemeResource ControlStrongFillColorDefaultBrush}"
+                                PointerCaptureLost="Slider_PointerCaptureLost"
+                                Tag="PWMSwitchLED" />
+                        </StackPanel>
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <ToggleButton
+                    x:Name="SwitchBuzzer"
+                    Grid.Column="1"
                     MinHeight="113"
-                Margin="20"
-                HorizontalAlignment="Stretch"
-                Click="ToggleButton_Click"
-                Content="{Binding IsChecked, ElementName=SwitchBuzzer, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchBuzzer}"
-                Tag="SwitchBuzzer" />
-            <ToggleButton
-                x:Name="SwitchFan"
-                Grid.Column="2"
+                    Margin="20"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Click="ToggleButton_Click"
+                    Tag="SwitchBuzzer">
+                    <ToggleButton.Content>
+                        <StackPanel>
+                            <TextBlock TextAlignment="Center">点击</TextBlock>
+                            <TextBlock Text="{Binding IsChecked, ElementName=SwitchBuzzer, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchBuzzer}" TextAlignment="Center" />
+                            <Slider
+                                x:Name="PWMSwitchBuzzer"
+                                Foreground="{ThemeResource ControlStrongFillColorDefaultBrush}"
+                                PointerCaptureLost="Slider_PointerCaptureLost"
+                                Tag="PWMSwitchBuzzer" />
+                        </StackPanel>
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <ToggleButton
+                    x:Name="SwitchFan"
+                    Grid.Column="2"
                     MinHeight="113"
-                Margin="20"
-                HorizontalAlignment="Stretch"
-                Click="ToggleButton_Click"
-                Tag="SwitchFan"
-                ToolTipService.ToolTip="右击切换转向">
-                <ToggleButton.Content>
-                    <StackPanel>
-                        <TextBlock Text="{Binding IsChecked, ElementName=SwitchFan, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchFan}" TextAlignment="Center" />
-                        <TextBlock
-                            FontSize="13"
-                            Foreground="Gray"
-                            Text="{Binding IsDoubleTapEnabled, ElementName=SwitchFanDirection, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchFanDirection}"
-                            TextAlignment="Center" />
-                    </StackPanel>
-                </ToggleButton.Content>
-                <ToggleButton.ContextFlyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem
-                            x:Name="SwitchFanDirection"
-                            Click="MenuFlyoutItem_Click"
-                            Icon="Sync"
-                            Text="切换转向" />
-                    </MenuFlyout>
-                </ToggleButton.ContextFlyout>
-            </ToggleButton>
-        </Grid>
-    </StackPanel>
+                    Margin="20"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Click="ToggleButton_Click"
+                    Tag="SwitchFan"
+                    ToolTipService.ToolTip="右击切换转向">
+                    <ToggleButton.Content>
+                        <StackPanel>
+                            <TextBlock TextAlignment="Center">点击</TextBlock>
+                            <TextBlock Text="{Binding IsChecked, ElementName=SwitchFan, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchFan}" TextAlignment="Center" />
+                            <Slider
+                                x:Name="PWMSwitchFan"
+                                Foreground="{ThemeResource ControlStrongFillColorDefaultBrush}"
+                                PointerCaptureLost="Slider_PointerCaptureLost"
+                                Tag="PWMSwitchFan" />
+                            <TextBlock
+                                FontSize="13"
+                                Foreground="Gray"
+                                Text="{Binding IsDoubleTapEnabled, ElementName=SwitchFanDirection, Converter={StaticResource FeatureStateToTextConverter}, ConverterParameter=SwitchFanDirection}"
+                                TextAlignment="Center" />
+                        </StackPanel>
+                    </ToggleButton.Content>
+                    <ToggleButton.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem
+                                x:Name="SwitchFanDirection"
+                                Click="MenuFlyoutItem_Click"
+                                Icon="Sync"
+                                Text="切换转向" />
+                        </MenuFlyout>
+                    </ToggleButton.ContextFlyout>
+                </ToggleButton>
+            </Grid>
+        </StackPanel>
     </ScrollViewer>
 </Page>

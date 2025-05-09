@@ -2,6 +2,8 @@
 using HostMCU.UWP.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Input;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -20,31 +22,44 @@ namespace HostMCU.UWP.Pages
             this.InitializeComponent();
         }
 
-        private async void ToggleButton_Click(object sender, RoutedEventArgs e)
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
-            FrameworkElement button = sender as FrameworkElement;
-            switch (button.Tag as string)
+            var toggleButton = sender as ToggleButton;
+            switch (toggleButton.Tag as string)
             {
                 case "SwitchLED":
-                    await serialPortServere.WriteDataAsync("1");
-                    Content.Text += "Started 1\r\n";
+                    serialPortServere.SwitchLED(toggleButton.IsChecked.GetValueOrDefault() ? PWMSwitchLED.Value : 0);
                     break;
                 case "SwitchBuzzer":
-                    await serialPortServere.WriteDataAsync("2");
-                    Content.Text += "Started 2\r\n";
+                    serialPortServere.SwitchBuzzer(toggleButton.IsChecked.GetValueOrDefault() ? PWMSwitchBuzzer.Value : 0);
                     break;
                 case "SwitchFan":
-                    await serialPortServere.WriteDataAsync("3");
-                    Content.Text += "Started 3\r\n";
+                    serialPortServere.SwitchFan(toggleButton.IsChecked.GetValueOrDefault() ? PWMSwitchFan.Value : 0, IsDoubleTapEnabled);
                     break;
             }
         }
 
-        private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
-            await serialPortServere.WriteDataAsync("4");
-            Content.Text += "Started 4\r\n";
+            serialPortServere.SwitchFan(SwitchFan.IsChecked.GetValueOrDefault() ? PWMSwitchFan.Value : 0, SwitchFanDirection.IsDoubleTapEnabled);
             SwitchFanDirection.IsDoubleTapEnabled = !SwitchFanDirection.IsDoubleTapEnabled;
+        }
+
+        private void Slider_PointerCaptureLost(object sender, PointerRoutedEventArgs e)
+        {
+            var slider = sender as Slider;
+            switch (slider.Tag as string)
+            {
+                case "PWMSwitchLED":
+                    serialPortServere.SwitchLED(PWMSwitchLED.Value);
+                    break;
+                case "PWMSwitchBuzzer":
+                    serialPortServere.SwitchBuzzer(PWMSwitchBuzzer.Value);
+                    break;
+                case "PWMSwitchFan":
+                    serialPortServere.SwitchFan(PWMSwitchFan.Value, IsDoubleTapEnabled);
+                    break;
+            }
         }
     }
 }
