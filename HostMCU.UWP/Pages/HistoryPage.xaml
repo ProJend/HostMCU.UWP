@@ -14,6 +14,15 @@
             <StackPanel Padding="40,10">
                 <TextBlock FontSize="16" TextWrapping="Wrap">25 ℃</TextBlock>
                 <TextBlock Text="{x:Bind Date}" TextWrapping="Wrap" />
+                <StackPanel.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem
+                            Click="MenuFlyoutItem_Click"
+                            Icon="Delete"
+                            Tag="delete"
+                            Text="删除" />
+                    </MenuFlyout>
+                </StackPanel.ContextFlyout>
             </StackPanel>
         </DataTemplate>
 
@@ -21,6 +30,5 @@
 
     <Grid>
         <ListView ItemTemplate="{StaticResource HistoryModelTemplate}" ItemsSource="{x:Bind HistoryViewModel}" />
-
     </Grid>
 </Page>
