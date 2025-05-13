@@ -103,6 +103,7 @@ namespace HostMCU.UWP
         {
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.ButtonForegroundColor = uISettings.GetColorValue(UIColorType.Foreground);
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
             uISettings.ColorValuesChanged += (setting, args) =>
